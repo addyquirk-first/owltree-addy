@@ -1,8 +1,12 @@
 {
   "broken": {
-    "Location 1": false
+    "Carroll Gardens": false,
+    "Location 1": false,
+    "Park Slope": false
   },
   "open": {
-    "Location 1": []
+    "Carroll Gardens": [],
+    "Location 1": [],
+    "Park Slope": []
   }
 }
