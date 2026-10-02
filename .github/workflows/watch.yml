@@ -1,0 +1,42 @@
+name: Watch Owl Tree
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # every 5 minutes (GitHub's minimum; runs can lag at busy times)
+  workflow_dispatch:         # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write            # so it can save state.json and avoid repeat alerts
+
+concurrency:
+  group: owltree-watcher
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install browser
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Check availability
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          ALERT_BEFORE: ${{ vars.ALERT_BEFORE }}
+        run: python check.py
+
+      - name: Save state
+        run: |
+          git config user.name "owltree-watcher"
+          git config user.email "watcher@users.noreply.github.com"
+          git add state.json
+          git diff --cached --quiet || (git commit -m "Update availability state" && git push)
