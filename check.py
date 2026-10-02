@@ -16,9 +16,8 @@ from playwright.sync_api import sync_playwright
 
 # ---- Edit these ------------------------------------------------------------
 LOCATIONS = {
-    "Location 1": "https://owltreekids.as.me/schedule/e06d0fee/appointment/70496014/calendar/11018044",
-    # Add the second location's booking link here, e.g.:
-    # "Carroll Gardens": "https://owltreekids.as.me/schedule/....",
+    "Carroll Gardens": "https://owltreekids.as.me/schedule/e06d0fee/appointment/70496014/calendar/11018044",
+    "Park Slope": "https://owltreekids.as.me/schedule/e06d0fee/appointment/70496014/calendar/11018121",
 }
 MONTHS_AHEAD = 3  # how many months forward to check
 # ----------------------------------------------------------------------------
