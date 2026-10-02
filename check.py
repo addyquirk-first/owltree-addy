@@ -22,7 +22,7 @@ LOCATIONS = {
 MONTHS_AHEAD = 3  # how many months forward to check
 # ----------------------------------------------------------------------------
 
-ALERT_BEFORE = os.environ.get("ALERT_BEFORE") or "2026-12-01"
+ALERT_BEFORE = os.environ.get("ALERT_BEFORE") or "2026-12-06"
 NTFY_TOPIC = os.environ["NTFY_TOPIC"]
 MANUAL_RUN = os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
 STATE_FILE = "state.json"
