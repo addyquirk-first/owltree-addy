@@ -5,7 +5,10 @@
     "Park Slope": false
   },
   "open": {
-    "Carroll Gardens": [],
+    "Carroll Gardens": [
+      "2026-10-04",
+      "2026-10-08"
+    ],
     "Location 1": [],
     "Park Slope": []
   }
